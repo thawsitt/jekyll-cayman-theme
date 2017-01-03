@@ -5,7 +5,7 @@ title: Linked Lists
 
 ## Quick Overview
 
-![Linked List](https://github.com/thawsitt/Data-Structures/blob/master/Linked%20Lists/images/linkedlist.bmp)
+![Linked List](https://raw.githubusercontent.com/thawsitt/Data-Structures/master/Linked%20Lists/images/linkedlist.bmp)
 
 * A linked list is a linear data structure where each element is a separate object.
 
