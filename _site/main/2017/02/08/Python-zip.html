@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <head>
+  <meta charset="UTF-8">
+  <title>Oxygen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- Cayman Theme CSS -->
+  <link rel="stylesheet" href="/css/cayman.css">
+  
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/github.css" type="text/css" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+  <body>
+    <section class="page-header">
+  <h1 class="project-name">Oxygen</h1>
+  <h2 class="project-tagline">A blog by Thawsitt</h2>
+  <a href="https://github.com/thawsitt/oxygen" class="btn">GitHub</a>
+  <a href="http://blog.thawsitt.me" class="btn">Home</a>
+  <a href="https://thawsitt.me" class="btn">About</a>
+</section>
+
+    <section class="main-content">
+      
+      <h1 id="python-built-in-functions">Python Built-in Functions</h1>
+<p>Welcome to the first post of the <strong><em>Python Built-in Functions</em></strong> series. This series is my attempt to understand Python Built-in functions better, and explain them more comprehensively. Let’s get started.</p>
+
+<h1 id="zip"><a href="https://docs.python.org/3/library/functions.html#zip">zip()</a></h1>
+
+<p><strong>Arguments</strong>: zip() takes one or more sequences or iterables.</p>
+
+<p><strong>Return</strong>: zip() returns an <strong>iterator of tuples</strong>, where <em>the i-th tuple contains the i-th element from each of the argument sequences or iterables</em>.</p>
+
+<p>For example:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># zipped is an iterator</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">zipped</span><span class="p">]</span>        <span class="c"># We make a list using zipped iterator</span>
+<span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<p>Keep in mind that if you feed in sequences of <strong>unequal length</strong> into zip function, the iterator stops when the shortest input iterable is exhausted.</p>
+
+<p>For example:</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">zipped</span><span class="p">]</span>
+<span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</code></pre>
+</div>
+
+<h2 id="usage-transposing-a-matrix">Usage: Transposing a matrix</h2>
+
+<p>Zip can be used to transpose a matrix (i.e to make a new matrix whose rows are the columns of the original). We will represent a matrix as <strong>a list of lists</strong> in python. For example, here is a 2x3 matrix.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+
+<span class="c"># So, here is our original matrix.</span>
+<span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="p">]</span>
+
+<span class="c"># We want to transpose it to:</span>
+<span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="p">]</span>
+</code></pre>
+</div>
+
+<p>How do we use the zip function to do this?</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">transposed</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">matrix</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">transposed</span>
+<span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="p">]</span>
+</code></pre>
+</div>
+
+<p>Isn’t this one liner transpose function cool? It works for any <em>n by m</em> matrix.</p>
+
+<h2 id="zipmatrix-and-starred-operator">zip(*matrix) and starred(*) operator</h2>
+
+<p>Let’s take a closer look at <code class="highlighter-rouge">list(zip(*matrix))</code>. Shall we?</p>
+
+<p><code class="highlighter-rouge">list()</code> is simple enough. The function takes an iterable and returns a list.</p>
+
+<p>What is <code class="highlighter-rouge">zip(*matrix)</code> doing? To understand this, we need to take a look at what the starred operator (*) in python does. Here is an excerpt from the <a href="https://docs.python.org/3/reference/expressions.html#calls">documentation</a>.</p>
+
+<blockquote>
+  <p>If the syntax *expression appears in the function call, expression must evaluate to an iterable. Elements from these iterables are treated as if they were additional positional arguments. For the call f(x1, x2, *y, x3, x4), if y evaluates to a sequence y1, …, yM, this is equivalent to a call with M+4 positional arguments x1, x2, y1, …, yM, x3, x4.</p>
+</blockquote>
+
+<p>* is used to unpack an iterable in Python 3. To illustrate this in a simple example.</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">)</span>                 <span class="c"># This call is the same as the following.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> 
+</code></pre>
+</div>
+<p>Remember that our matrix is a list of lists? <code class="highlighter-rouge">*matrix</code> unpack our matrix into lists (where each list represent a row), and feed them into the <code class="highlighter-rouge">zip()</code> function which does, you know … zip things, resulting in a transposed matrix. So, <code class="highlighter-rouge">zip(*matrix)</code> has the same effect as <code class="highlighter-rouge">zip([1, 2, 3], [4, 5, 6])</code></p>
+
+<p>That’s all for today. I will add more content soon. Let me know if there is something I can correct or add to this post.</p>
+
+<h2 id="notes">Notes</h2>
+<ul>
+  <li>This post assumes Python version of 3.6.0.</li>
+</ul>
+
+
+      <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Oxygen</a> is maintained by <a href="https://thawsitt.me">Thawsitt Naing</a>.</span>
+  <span class="site-footer-credits">This page was built with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://github.com/jasonlong/cayman-theme" target="_blank">Cayman</a></span>.
+</footer>
+
+
+    </section>
+
+  </body>
+</html>
