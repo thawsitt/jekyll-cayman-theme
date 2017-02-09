@@ -1,14 +1,14 @@
 ---
-layout: default
+layout: post
 title:  "Understanding Python Built-in Functions: zip()"
 date:   2017-02-08 03:30:00
 categories: main
 ---
 
-# Python Built-in Functions
+## Python Built-in Functions
 Welcome to the first post of the ***Python Built-in Functions*** series. This series is my attempt to understand Python Built-in functions better, and explain them more comprehensively. Let's get started. 
 
-# [zip()](https://docs.python.org/3/library/functions.html#zip)
+## [zip()](https://docs.python.org/3/library/functions.html#zip)
 
 **Arguments**: zip() takes one or more sequences or iterables.
 
@@ -57,10 +57,21 @@ How do we use the zip function to do this?
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> transposed = list(zip(*matrix))
 >>> transposed
+[ (1, 4), (2, 5), (3, 6) ]
+```
+
+Isn't this one-liner transpose function cool? It works for any *n by m* matrix.
+
+*Side-note*: Keep in mind that our transposed matrix becomes **a list of tuples**, instead of our original format. This is because zip() returns an iterator of tuples. If we want the result to be **a list of lists**, we can use **list comprehension**, which is a topic for another day. In short, we can do:
+
+```python
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> transposed = [list(tup) for tup in zip(*matrix)]
+>>> transposed
 [ [1, 4], [2, 5], [3, 6] ]
 ```
 
-Isn't this one liner transpose function cool? It works for any *n by m* matrix.
+Quick Explanation: In short we are defining a new list like this: [*list definition*]. ```zip(*matrix)``` returns an iterator of tuples, and we turn each tuple into a list with ```list(tup)```, resulting in a list of lists.
 
 ## zip(*matrix) and starred(\*) operator
 
